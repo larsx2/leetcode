@@ -29,6 +29,16 @@ def from_list(li):
     return head
 
 
+def solve2(head):
+    prev, current = None, head
+    while current:
+        tmp = current.next
+        current.next = prev
+        prev = current
+        current = tmp
+    return prev
+
+
 def solve(head):
     q = []
     current = head
@@ -47,3 +57,6 @@ def solve(head):
 assert to_list(solve(from_list([1, 2, 3, 4, 5]))) == [5, 4, 3, 2, 1]
 assert to_list(solve(from_list([1, 2]))) == [2, 1]
 assert to_list(solve(from_list([]))) == []
+assert to_list(solve2(from_list([1, 2, 3, 4, 5]))) == [5, 4, 3, 2, 1]
+assert to_list(solve2(from_list([1, 2]))) == [2, 1]
+assert to_list(solve2(from_list([]))) == []
